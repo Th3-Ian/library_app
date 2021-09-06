@@ -1,6 +1,6 @@
 let my_library = [];
 
-var lib_cols = ['Title', 'Author', 'Pages', 'Read?']
+var lib_cols = ['Title', 'Author', 'Pages', 'Read?', 'Delete']
 
 function Book(title, author, pages, read) {
   this.title = title
@@ -97,14 +97,29 @@ for (var i = 0; i < my_library.length; i++) {
 	readCell.classList.add('read');
 	readCell.dataset.personId = s.id;
 
+	var delCell = document.createElement('td');
+	delCell.textContent = "X";
+	delCell.classList.add('delete-cell');
+
 	r.appendChild(titleCell);
 	r.appendChild(authorCell);
 	r.appendChild(pageCell);
 	r.appendChild(readCell);
+	r.appendChild(delCell);
 
 	t.appendChild(r);
 }
 
+// Update Read Status
+
+const readSelector = document.querySelectorAll(".read");
+
+for (let i = 0; i < readSelector.length; i++) {
+	readSelector[i].addEventListener("click", function(){
+		var readStatus = prompt("Please update the read status:");
+	readSelector[i].textContent = readStatus
+	});
+}
 
 // New Book Button
 
