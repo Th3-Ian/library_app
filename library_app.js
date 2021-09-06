@@ -1,5 +1,6 @@
 let my_library = [];
 
+var lib_cols = ['Title', 'Author', 'Pages', 'Read?']
 
 function Book(title, author, pages, read) {
   this.title = title
@@ -39,6 +40,8 @@ const two_towers = new Book('The Twin Towers', 'J.R.R. Tolkien', '348', 'read')
 
 addBookToLibrary(the_hobbit)
 addBookToLibrary(two_towers)
+the_hobbit.sayName()
+two_towers.sayName()
 
 function showLibrary() {
 	output = "";
@@ -48,9 +51,62 @@ function showLibrary() {
    document.getElementById("output").innerHTML = output;
 }
 
-the_hobbit.sayName()
-two_towers.sayName()
+// Table Constructor
 
+var t = document.createElement('table');
+t.classList.add('book-table', 'listing');
+
+t.appendChild(document.createElement('thead'));
+t.querySelector('thead').appendChild(document.createElement('tr'));
+
+for (var i = 0; i < lib_cols.length; i++) {
+	var heading = document.createElement('td');
+	heading.textContent = lib_cols[i];
+	t.querySelector('thead tr').appendChild(heading);
+}
+
+document.getElementById('container').appendChild(t);
+
+
+// Create Table Rows
+
+for (var i = 0; i < my_library.length; i++) {
+	var s = my_library[i];
+	var r = document.createElement('tr');
+
+	r.dataset.personId = s.id;
+	r.id = s.title.toLowerCase() + "-row";
+
+	var titleCell = document.createElement('td');
+	titleCell.textContent = s.title;
+	titleCell.classList.add('title');
+	titleCell.dataset.personId = s.id;
+
+	var authorCell = document.createElement('td');
+	authorCell.textContent = s.author;
+	authorCell.classList.add('author');
+	authorCell.dataset.personId = s.id;
+
+	var pageCell = document.createElement('td');
+	pageCell.textContent = s.pages;
+	pageCell.classList.add('pages');
+	pageCell.dataset.personId = s.id;
+
+	var readCell = document.createElement('td');
+	readCell.textContent = s.read;
+	readCell.classList.add('read');
+	readCell.dataset.personId = s.id;
+
+	r.appendChild(titleCell);
+	r.appendChild(authorCell);
+	r.appendChild(pageCell);
+	r.appendChild(readCell);
+
+	t.appendChild(r);
+}
+
+
+// New Book Button
 
 const toggleModal = () => {
 	document.querySelector('.modal').classList.toggle('modal--hidden');

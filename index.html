@@ -8,33 +8,33 @@
     <title>Document</title>
   </head>
   <body>
-		<div class="open-btn">
-			<button id="show-modal">New Book</button>
-		</div>
-		<div class="modal modal--hidden">
-			<div class="modal_contents">
-				<div class="modal_close-bar"><span>X</span></div>
-				<form id="open-form">
-					<label for="title">Title</label>
-					<input type="text" name="title" id="title" /><br />
-					<label for="author">Author</label>
-					<input type="text" name="author" id="author" /><br />
-					<label for="page">Page Count</label>
-					<input type="text" name="page" id="page" /><br />
-					<label for="read">Read?</label>
-					<input type="text" name="read" id="read" /><br />
-					<input type="submit" name="submit" id="submit" />
-				</form>
-			</div>
-		</div>
-
-      <div id="output">
-        <h2 id="title_output"></h2>
-        <p id="author_output"></p>
-        <p id="pages_output"></p>
-        <p id="read_output"></p>
+    <div class="open-btn">
+      <button id="show-modal">New Book</button>
+    </div>
+    <div class="modal modal--hidden">
+      <div class="modal_contents">
+        <div class="modal_close-bar"><span>X</span></div>
+        <form id="open-form">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title" /><br />
+          <label for="author">Author</label>
+          <input type="text" name="author" id="author" /><br />
+          <label for="page">Page Count</label>
+          <input type="text" name="page" id="page" /><br />
+          <label for="read">Read?</label>
+          <input type="text" name="read" id="read" /><br />
+          <input type="submit" name="submit" id="submit" />
+        </form>
       </div>
-    </form>
+    </div>
+
+    <div id="output">
+      <h2 id="title_output"></h2>
+      <p id="author_output"></p>
+      <p id="pages_output"></p>
+      <p id="read_output"></p>
+    </div>
+    <div id="container"></div>
   </body>
   <script src="library_app.js"></script>
 </html>
