@@ -154,3 +154,123 @@ const toggleModal = () => {
 	 addBookToLibrary();
 	 toggleModal();
  });
+
+
+ // Form Validation
+
+ const book_title = document.getElementById("title");
+ const titleError = document.querySelector('#title + span.error');
+ const book_author = document.getElementById("author");
+ const authorError = document.querySelector('#author + span.error');
+ const page_count = document.getElementById("page");
+ const countError = document.querySelector('#page + span.error');
+ const book_read = document.getElementById("read");
+ const readError = document.querySelector('#read + span.error');
+const form = document.getElementById('open-form');
+
+
+book_title.addEventListener('input', function (event) {
+	if (book_title.validity.valid) {
+		titleError.textContent = ''; // Reset the content of the message
+    titleError.className = 'error';
+	} else {
+		showTitleError();
+	}
+});
+
+book_author.addEventListener('input', function (event) {
+	if (book_author.validity.valid) {
+		authorError.textContent = ''; // Reset the content of the message
+    authorError.className = 'error';
+	} else {
+		showAuthorError();
+	}
+});
+
+page_count.addEventListener('input', function (event) {
+	if (page_count.validity.valid) {
+		countError.textContent = ''; // Reset the content of the message
+    countError.className = 'error';
+	} else {
+		showCountError();
+	}
+});
+
+book_read.addEventListener('input', function (event) {
+	if (book_read.validity.valid) {
+		readError.textContent = ''; // Reset the content of the message
+    readError.className = 'error';
+	} else {
+		showReadError();
+	}
+});
+
+form.addEventListener('submit', function (event) {
+  if(!book_title.validity.valid) {
+    showTitleError();
+    event.preventDefault();
+  } else if (!book_author.validity.valid ) {
+		showAuthorError();
+    event.preventDefault();
+	} else if (!page_count.validity.valid) {
+		showCountError();
+    event.preventDefault();
+	} else if (!book_read.validity.valid) {
+		showReadError();
+    event.preventDefault();
+	}
+});
+
+function showTitleError() {
+  if(book_title.validity.valueMissing) {
+    // If the field is empty,
+    // display the following error message.
+  	titleError.textContent = 'You need to enter a book title.';
+  } else if(book_title.validity.tooShort) {
+    // If the data is too short,
+    // display the following error message.
+    titleError.textContent = 'The title needs to be 4 characters or longer';
+  }
+titleError.className = 'error active';
+}
+
+function showAuthorError() {
+  if(book_author.validity.valueMissing) {
+    // If the field is empty,
+    // display the following error message.
+  	authorError.textContent = 'You need to enter a value.';
+  } else if(book_author.validity.tooShort) {
+    // If the data is too short,
+    // display the following error message.
+    authorError.textContent = 'The author needs to be 4 characters or longer';
+  }
+authorError.className = 'error active';
+}
+
+function showCountError() {
+  if(page_count.validity.valueMissing) {
+    // If the field is empty,
+    // display the following error message.
+  	countError.textContent = 'You need to enter a value.';
+  } else if(page_count.validity.typeMismatch) {
+    // If the field doesn't contain an email address,
+    // display the following error message.
+    countError.textContent = 'Entered value needs to be a number.';
+  } else if(page_count.validity.tooShort) {
+    // If the data is too short,
+    // display the following error message.
+    countError.textContent = `The book should be at least 50 pages.`;
+  }
+countError.className = 'error active';
+}
+
+function showReadError() {
+  if(book_read.validity.valueMissing) {
+    // If the field is empty,
+    // display the following error message.
+  	readError.textContent = "You need to enter a value 'Read' or 'Not Read'.";
+  } else if(book_read.validity.patternMismatch) {
+    readError.textContent = "Please enter 'Read' or 'Not Read'";
+  }
+readError.className = 'error active';
+}

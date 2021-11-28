@@ -16,13 +16,30 @@
         <div class="modal_close-bar"><span>X</span></div>
         <form id="open-form">
           <label for="title">Title</label>
-          <input type="text" name="title" id="title" /><br />
+          <input type="text" name="title" id="title" required minlength="4" />
+          <span class="error" aria-live="polite"></span><br />
           <label for="author">Author</label>
-          <input type="text" name="author" id="author" /><br />
+          <input
+            type="text"
+            name="author"
+            id="author"
+            required
+            minlength="4"
+            maxlength="25"
+          />
+          <span class="error" aria-live="polite"></span><br />
           <label for="page">Page Count</label>
-          <input type="text" name="page" id="page" /><br />
-          <label for="read">Read?</label>
-          <input type="text" name="read" id="read" /><br />
+          <input type="number" name="page" id="page" required min="50" />
+          <span class="error" aria-live="polite"></span><br />
+          <label for="read">Read or Not Read</label>
+          <input
+            type="text"
+            name="read"
+            id="read"
+            required
+            pattern="[Rr]ead|[Nn]ot [Rr]ead"
+          />
+          <span class="error" aria-live="polite"></span><br />
           <input type="submit" name="submit" id="submit" />
         </form>
       </div>

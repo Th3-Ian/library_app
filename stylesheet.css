@@ -12,8 +12,8 @@
   background-color: #fff;
   padding: 2rem 4rem;
 }
-input[type="text"],
-input[type="email"],
+input[type='text'],
+input[type='email'],
 textarea {
   width: 100%;
   padding: 0.5rem;
@@ -38,4 +38,34 @@ textarea {
 }
 .modal--hidden {
   display: none;
+}
+
+/* Validation */
+
+input:invalid {
+  border: 2px solid rgb(168, 57, 57);
+}
+
+input:valid {
+  border: 2px solid black;
+}
+
+input:focus:invalid {
+  outline: none;
+}
+
+.error {
+  width: 100%;
+  padding: 0;
+
+  font-size: 14px;
+  color: black;
+  background-color: rgb(165, 165, 165);
+  border-radius: 0 0 5px 5px;
+
+  box-sizing: border-box;
+}
+
+.error.active {
+  padding: 0.3em;
 }
